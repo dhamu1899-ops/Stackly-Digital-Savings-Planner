@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — Stackly</title>
+    <link rel="stylesheet" href="css/style.css">
+    <noscript><style>.sec-head .sec-title,.sec-head .sec-sub{opacity:1!important;transform:none!important}.sec-head .sec-label::before,.sec-head .sec-label::after{transform:none!important}.preloader{display:none!important}</style></noscript>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="pre-logo">
+            <div class="pre-ring"></div>
+            <svg viewBox="398 82 212 290" xmlns="http://www.w3.org/2000/svg"><path fill="#fe4c28" d="M419.71,256.18 C408,235.74 410.22,215.61 419.89,195.68 C426.37,182.32 436.26,171.44 446.51,160.9 C457.08,150.04 468.78,140.35 478.79,128.9 C487.41,119.04 494.8,108.46 500.03,96.43 C500.74,94.8 501,92.85 502.79,91.71 C503.21,91.84 503.88,91.82 504.1,92.13 C514.53,106.34 522,121.48 518.29,139.86 C515.93,151.5 508.99,160.31 500.3,167.94 C487.79,178.93 473.63,187.95 462.05,200.04 C456.22,206.12 451.19,212.66 449.15,221.05 C445.38,236.57 454.27,249.2 470.2,250.78 C485.24,252.27 499.3,248.88 512.63,242 C514.02,241.28 515.21,239.79 517.06,240.55 C517.83,242.06 516.69,242.79 515.92,243.56 C502.48,256.92 487.52,267.97 468.59,271.95 C447.92,276.29 431.27,272.38 419.71,256.18z"/><path fill="#fe4c28" d="M536.35,311.35 C521.09,325.62 508.63,341.45 501.64,361.3 C500.58,360.86 499.8,360.78 499.46,360.35 C491.32,350.11 485.46,338.91 484.71,325.53 C484.03,313.54 489.24,303.91 496.95,295.36 C506.74,284.51 519.09,276.7 530.33,267.57 C539.68,259.98 548.93,252.35 553.65,240.72 C556.25,234.32 556.8,227.72 555.17,221.12 C551.96,208.2 539.4,200.89 526.17,203.88 C513.91,206.65 503.24,212.7 493.08,219.82 C492.04,220.55 491.27,221.85 489.66,221.56 C488.66,220.29 489.65,219.35 490.29,218.48 C503.85,199.98 521.51,187.67 544.32,183.64 C574.74,178.25 599.44,199.88 594.8,234.35 C592.54,251.2 583.63,264.79 572.58,277.16 C561.56,289.49 548.61,299.8 536.35,311.35z"/></svg>
+        </div>
+        <div class="pre-text">Stackly</div>
+        <div class="pre-sub">Digital Savings Planner</div>
+        <div class="pre-bar"><div class="pre-fill"></div></div>
+        <div class="pre-pct">0%</div>
+    </div>
+
+    <!-- Auth Success Overlay -->
+    <div class="auth-success" id="authSuccess">
+        <div class="auth-success-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="auth-success-txt">Account created</div>
+        <div class="auth-success-sub">Taking you to the login page…</div>
+        <div class="auth-success-bar"><div class="auth-success-fill"></div></div>
+    </div>
+
+    <div class="auth-page">
+        <!-- Visual Side -->
+        <div class="auth-visual">
+            <div class="auth-vis-img">
+                <img src="assets/photo-1642790106117-e829e14a795f-1000.webp" alt="Savings automation">
+            </div>
+            <a href="index.html" class="auth-vis-logo logo">
+                <div class="logo-icon"><svg viewBox="398 82 212 290" xmlns="http://www.w3.org/2000/svg"><path fill="#fe4c28" d="M419.71,256.18 C408,235.74 410.22,215.61 419.89,195.68 C426.37,182.32 436.26,171.44 446.51,160.9 C457.08,150.04 468.78,140.35 478.79,128.9 C487.41,119.04 494.8,108.46 500.03,96.43 C500.74,94.8 501,92.85 502.79,91.71 C503.21,91.84 503.88,91.82 504.1,92.13 C514.53,106.34 522,121.48 518.29,139.86 C515.93,151.5 508.99,160.31 500.3,167.94 C487.79,178.93 473.63,187.95 462.05,200.04 C456.22,206.12 451.19,212.66 449.15,221.05 C445.38,236.57 454.27,249.2 470.2,250.78 C485.24,252.27 499.3,248.88 512.63,242 C514.02,241.28 515.21,239.79 517.06,240.55 C517.83,242.06 516.69,242.79 515.92,243.56 C502.48,256.92 487.52,267.97 468.59,271.95 C447.92,276.29 431.27,272.38 419.71,256.18z"/><path fill="#fe4c28" d="M536.35,311.35 C521.09,325.62 508.63,341.45 501.64,361.3 C500.58,360.86 499.8,360.78 499.46,360.35 C491.32,350.11 485.46,338.91 484.71,325.53 C484.03,313.54 489.24,303.91 496.95,295.36 C506.74,284.51 519.09,276.7 530.33,267.57 C539.68,259.98 548.93,252.35 553.65,240.72 C556.25,234.32 556.8,227.72 555.17,221.12 C551.96,208.2 539.4,200.89 526.17,203.88 C513.91,206.65 503.24,212.7 493.08,219.82 C492.04,220.55 491.27,221.85 489.66,221.56 C488.66,220.29 489.65,219.35 490.29,218.48 C503.85,199.98 521.51,187.67 544.32,183.64 C574.74,178.25 599.44,199.88 594.8,234.35 C592.54,251.2 583.63,264.79 572.58,277.16 C561.56,289.49 548.61,299.8 536.35,311.35z"/></svg></div>
+                <span class="logo-txt">Stackly</span>
+            </a>
+            <div class="auth-vis-content">
+                <h2>Your goals, <em class="it">one place.</em></h2>
+                <p>Join 50,000+ savers building wealth with clarity. Start free — upgrade whenever you are ready.</p>
+            </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="auth-form-side">
+            <a href="index.html" class="auth-close" aria-label="Close and go back">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </a>
+            <div class="auth-box">
+                <span class="sec-label">Get Started</span>
+                <h1 class="auth-title">Create your <em class="it">account.</em></h1>
+                <p class="auth-sub">It takes less than a minute to get started.</p>
+
+                <form class="auth-form" id="signupForm">
+                    <!-- Role selector -->
+                    <div class="role-sel">
+                        <div class="role-opt">
+                            <input type="radio" name="role" id="roleClient" value="client" checked>
+                            <label class="role-lbl" for="roleClient">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                <span>Client</span>
+                            </label>
+                        </div>
+                        <div class="role-opt">
+                            <input type="radio" name="role" id="roleAdmin" value="admin">
+                            <label class="role-lbl" for="roleAdmin">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                <span>Admin</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suName">Full Name</label>
+                        <input type="text" id="suName" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suEmail">Email Address</label>
+                        <input type="email" id="suEmail" placeholder="you@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suPass">Password</label>
+                        <div style="position:relative;">
+                            <input type="password" id="suPass" placeholder="At least 8 characters" required style="padding-right:48px;">
+                            <button type="button" class="toggle-pass" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-3);padding:4px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suConfirm">Confirm Password</label>
+                        <div style="position:relative;">
+                            <input type="password" id="suConfirm" placeholder="Re-enter your password" required style="padding-right:48px;">
+                            <button type="button" class="toggle-pass" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-3);padding:4px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="auth-row">
+                        <label><input type="checkbox" required> I agree to the <a href="#" data-toast="Terms of Service - available on request.">Terms</a> &amp; <a href="#" data-toast="Privacy policy: request a copy from hello@stackly.studio.">Privacy</a></label>
+                    </div>
+
+                    <button type="submit" class="auth-btn">Create Account</button>
+
+                    <div class="auth-div">or sign up with</div>
+
+                    <div class="auth-social">
+                        <button type="button" class="auth-soc-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                            Google
+                        </button>
+                        <button type="button" class="auth-soc-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            GitHub
+                        </button>
+                    </div>
+
+                    <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

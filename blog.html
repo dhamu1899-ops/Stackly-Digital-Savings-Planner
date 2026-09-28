@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Stackly</title>
+    <link rel="stylesheet" href="css/style.css">
+    <noscript><style>.sec-head .sec-title,.sec-head .sec-sub{opacity:1!important;transform:none!important}.sec-head .sec-label::before,.sec-head .sec-label::after{transform:none!important}.reveal{opacity:1!important;transform:none!important}.preloader{display:none!important}</style></noscript>
+</head>
+<body class="dark-hero">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="pre-logo">
+            <div class="pre-ring"></div>
+            <svg viewBox="398 82 212 290" xmlns="http://www.w3.org/2000/svg"><path fill="#fe4c28" d="M419.71,256.18 C408,235.74 410.22,215.61 419.89,195.68 C426.37,182.32 436.26,171.44 446.51,160.9 C457.08,150.04 468.78,140.35 478.79,128.9 C487.41,119.04 494.8,108.46 500.03,96.43 C500.74,94.8 501,92.85 502.79,91.71 C503.21,91.84 503.88,91.82 504.1,92.13 C514.53,106.34 522,121.48 518.29,139.86 C515.93,151.5 508.99,160.31 500.3,167.94 C487.79,178.93 473.63,187.95 462.05,200.04 C456.22,206.12 451.19,212.66 449.15,221.05 C445.38,236.57 454.27,249.2 470.2,250.78 C485.24,252.27 499.3,248.88 512.63,242 C514.02,241.28 515.21,239.79 517.06,240.55 C517.83,242.06 516.69,242.79 515.92,243.56 C502.48,256.92 487.52,267.97 468.59,271.95 C447.92,276.29 431.27,272.38 419.71,256.18z"/><path fill="#fe4c28" d="M536.35,311.35 C521.09,325.62 508.63,341.45 501.64,361.3 C500.58,360.86 499.8,360.78 499.46,360.35 C491.32,350.11 485.46,338.91 484.71,325.53 C484.03,313.54 489.24,303.91 496.95,295.36 C506.74,284.51 519.09,276.7 530.33,267.57 C539.68,259.98 548.93,252.35 553.65,240.72 C556.25,234.32 556.8,227.72 555.17,221.12 C551.96,208.2 539.4,200.89 526.17,203.88 C513.91,206.65 503.24,212.7 493.08,219.82 C492.04,220.55 491.27,221.85 489.66,221.56 C488.66,220.29 489.65,219.35 490.29,218.48 C503.85,199.98 521.51,187.67 544.32,183.64 C574.74,178.25 599.44,199.88 594.8,234.35 C592.54,251.2 583.63,264.79 572.58,277.16 C561.56,289.49 548.61,299.8 536.35,311.35z"/></svg>
+        </div>
+        <div class="pre-text">Stackly</div>
+        <div class="pre-sub">Digital Savings Planner</div>
+        <div class="pre-bar"><div class="pre-fill"></div></div>
+        <div class="pre-pct">0%</div>
+    </div>
+
+    <!-- 1. Header -->
+    <nav class="navbar">
+        <div class="nav-wrap">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg viewBox="398 82 212 290" xmlns="http://www.w3.org/2000/svg"><path fill="#fe4c28" d="M419.71,256.18 C408,235.74 410.22,215.61 419.89,195.68 C426.37,182.32 436.26,171.44 446.51,160.9 C457.08,150.04 468.78,140.35 478.79,128.9 C487.41,119.04 494.8,108.46 500.03,96.43 C500.74,94.8 501,92.85 502.79,91.71 C503.21,91.84 503.88,91.82 504.1,92.13 C514.53,106.34 522,121.48 518.29,139.86 C515.93,151.5 508.99,160.31 500.3,167.94 C487.79,178.93 473.63,187.95 462.05,200.04 C456.22,206.12 451.19,212.66 449.15,221.05 C445.38,236.57 454.27,249.2 470.2,250.78 C485.24,252.27 499.3,248.88 512.63,242 C514.02,241.28 515.21,239.79 517.06,240.55 C517.83,242.06 516.69,242.79 515.92,243.56 C502.48,256.92 487.52,267.97 468.59,271.95 C447.92,276.29 431.27,272.38 419.71,256.18z"/><path fill="#fe4c28" d="M536.35,311.35 C521.09,325.62 508.63,341.45 501.64,361.3 C500.58,360.86 499.8,360.78 499.46,360.35 C491.32,350.11 485.46,338.91 484.71,325.53 C484.03,313.54 489.24,303.91 496.95,295.36 C506.74,284.51 519.09,276.7 530.33,267.57 C539.68,259.98 548.93,252.35 553.65,240.72 C556.25,234.32 556.8,227.72 555.17,221.12 C551.96,208.2 539.4,200.89 526.17,203.88 C513.91,206.65 503.24,212.7 493.08,219.82 C492.04,220.55 491.27,221.85 489.66,221.56 C488.66,220.29 489.65,219.35 490.29,218.48 C503.85,199.98 521.51,187.67 544.32,183.64 C574.74,178.25 599.44,199.88 594.8,234.35 C592.54,251.2 583.63,264.79 572.58,277.16 C561.56,289.49 548.61,299.8 536.35,311.35z"/></svg></div>
+                <span class="logo-txt">Stackly</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="plans.html">Plans</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="login.html" class="nav-login">Log In</a>
+                <a href="login.html" class="btn-start">Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+            <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- 2. Page Hero -->
+    <section class="page-hero" style="background-image:var(--ph-grad), url('assets/photo-1499750310107-5fef28a66643-1600.webp')">
+        <div class="container">
+            <span class="sec-label">Journal</span>
+            <h1>Insights &amp; <em class="it">ideas.</em></h1>
+            <p>Guides, strategies, and stories about building lasting wealth — written by the Stackly team.</p>
+        
+            <div class="ph-meta">
+                <div class="ph-crumb"><a href="index.html">Home</a><span class="sep"></span><strong>Blog</strong></div>
+                <span class="ph-badge">&#10022; Stackly Studio</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Featured Post -->
+    <section class="section">
+        <div class="container">
+            <div class="sec-head reveal">
+                <span class="sec-label">Featured</span>
+                <h2 class="sec-title">Editor's <em class="it">pick.</em></h2>
+            </div>
+            <div class="blog-feature reveal">
+                <div class="blog-feature-img"><img src="assets/photo-1434626881859-194d67b2b86f-1000.webp" alt="Featured article" loading="lazy"></div>
+                <div>
+                    <div class="blog-meta"><span class="cat">Guides</span><span class="dot"></span><span>8 min read</span><span class="dot"></span><span>Sep 20, 2026</span></div>
+                    <h3 style="font-size:1.9rem;margin-bottom:14px;">The Complete Guide to Building Your First Emergency Fund</h3>
+                    <p style="color:var(--text-2);line-height:1.75;margin-bottom:24px;">Why every financial plan starts with a safety net, how much you actually need, and the fastest strategies to get there — even on a tight income.</p>
+                    <a href="#" data-toast="The full article is coming soon - subscribe to get it first." class="btn btn-dark">Read Article →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Blog Grid -->
+    <section class="section feat-bg">
+        <div class="container">
+            <div class="sec-head center reveal">
+                <span class="sec-label">Latest</span>
+                <h2 class="sec-title">Fresh from the <em class="it">journal.</em></h2>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card reveal">
+                    <div class="blog-card-img"><img src="assets/photo-1579621970563-ebec7560ff3e-800.webp" alt="Budgeting" loading="lazy"></div>
+                    <div class="blog-card-body">
+                        <div class="blog-meta"><span class="cat">Budgeting</span><span class="dot"></span><span>5 min read</span></div>
+                        <h3>The 50/30/20 Rule for Modern Savers</h3>
+                        <p>How to split your income between needs, wants, and savings for lasting financial health.</p>
+                        <a href="#" data-toast="The full article is coming soon - subscribe to get it first." class="blog-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="blog-card reveal rd1">
+                    <div class="blog-card-img"><img src="assets/photo-1633158829585-23ba8f7c8caf-800.webp" alt="Investing" loading="lazy"></div>
+                    <div class="blog-card-body">
+                        <div class="blog-meta"><span class="cat">Investing</span><span class="dot"></span><span>7 min read</span></div>
+                        <h3>Compound Interest: Your Secret Weapon</h3>
+                        <p>How time and compound growth can transform modest savings into real wealth.</p>
+                        <a href="#" data-toast="The full article is coming soon - subscribe to get it first." class="blog-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="blog-card reveal rd2">
+                    <div class="blog-card-img"><img src="assets/photo-1554224154-26032ffc0d07-800.webp" alt="Planning" loading="lazy"></div>
+                    <div class="blog-card-body">
+                        <div class="blog-meta"><span class="cat">Lifestyle</span><span class="dot"></span><span>4 min read</span></div>
+                        <h3>Building an Emergency Fund That Works</h3>
+                        <p>Why 3 to 6 months of expenses matters and how to build your safety net faster.</p>
+                        <a href="#" data-toast="The full article is coming soon - subscribe to get it first." class="blog-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="blog-card reveal">
+                    <div class="blog-card-img"><img src="assets/photo-1554224155-6726b3ff858f-800.webp" alt="Debt" loading="lazy"></div>
+                    <div class="blog-card-body">
+                        <div class="blog-meta"><span class="cat">Debt</span><span class="dot"></span><span>6 min read</span></div>
+                        <h3>Avalanche vs. Snowball: Paying Off Debt</h3>
+                        <p>Two proven strategies for eliminating debt — and which one fits your personality.</p>
+                        <a href="#" data-toast="The full article is coming soon - subscribe to get it first." class="blog-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="blog-card reveal rd1">
+                    <div class="blog-card-img"><img src="assets/photo-1642790106117-e829e14a795f-800.webp" alt="Automation" loading="lazy"></div>
+                    <div class="blog-card-body">
+                        <div class="blog-meta"><span class="cat">Automation</span><span class="dot"></span><span>5 min read</span></div>
+                        <h3>Automate Your Savings and Never Think About It</h3>
+                        <p>Set up systems that save for you so willpower is never part of the equation.</p>
+                        <a href="#" data-toast="The full article is coming soon - subscribe to get it first." class="blog-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="blog-card reveal rd2">
+                    <div class="blog-card-img"><img src="assets/photo-1551288049-bebda4e38f71-800.webp" alt="Goals" loading="lazy"></div>
+                    <div class="blog-card-body">
+                        <div class="blog-meta"><span class="cat">Goals</span><span class="dot"></span><span>4 min read</span></div>
+                        <h3>Setting Savings Goals You Will Actually Achieve</h3>
+                        <p>SMART goals for money: how to define targets that stay motivating for months.</p>
+                        <a href="#" data-toast="The full article is coming soon - subscribe to get it first." class="blog-link">Read Article →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Newsletter -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-dark reveal" style="max-width:720px;">
+                <span class="sec-label">Newsletter</span>
+                <h2>Get one smart tip <em class="it">every week.</em></h2>
+                <p>Join 12,000 readers getting practical savings advice — no fluff, unsubscribe anytime.</p>
+                <div style="display:flex;gap:12px;max-width:440px;margin:0 auto;position:relative;flex-wrap:wrap;justify-content:center;">
+                    <input type="email" placeholder="your@email.com" style="flex:1;min-width:220px;padding:15px 22px;border-radius:9999px;border:1.5px solid var(--bd-d);background:transparent;color:var(--text-inv);font-family:var(--sans);font-size:0.95rem;">
+                    <button class="btn btn-brand">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CTA -->
+    <section class="section cta-sec" style="padding-top:0;">
+        <div class="container">
+            <div class="cta-box reveal">
+                <span class="sec-label">Start</span>
+                <h2>Put these ideas <em class="it">into practice.</em></h2>
+                <p>Create a free account and start tracking your savings today.</p>
+                <a href="login.html" class="btn btn-brand btn-lg">Get Started Free</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-news">
+                    <h3>Money advice that feels like a <em class="it">quiet advantage.</em></h3>
+                    <p>One thoughtful email each week — no noise, no spam, unsubscribe anytime.</p>
+                </div>
+                <form class="news-form" action="#" onsubmit="return false;">
+                    <input type="email" placeholder="Enter your email address" aria-label="Email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon"><svg viewBox="398 82 212 290" xmlns="http://www.w3.org/2000/svg"><path fill="#fe4c28" d="M419.71,256.18 C408,235.74 410.22,215.61 419.89,195.68 C426.37,182.32 436.26,171.44 446.51,160.9 C457.08,150.04 468.78,140.35 478.79,128.9 C487.41,119.04 494.8,108.46 500.03,96.43 C500.74,94.8 501,92.85 502.79,91.71 C503.21,91.84 503.88,91.82 504.1,92.13 C514.53,106.34 522,121.48 518.29,139.86 C515.93,151.5 508.99,160.31 500.3,167.94 C487.79,178.93 473.63,187.95 462.05,200.04 C456.22,206.12 451.19,212.66 449.15,221.05 C445.38,236.57 454.27,249.2 470.2,250.78 C485.24,252.27 499.3,248.88 512.63,242 C514.02,241.28 515.21,239.79 517.06,240.55 C517.83,242.06 516.69,242.79 515.92,243.56 C502.48,256.92 487.52,267.97 468.59,271.95 C447.92,276.29 431.27,272.38 419.71,256.18z"/><path fill="#fe4c28" d="M536.35,311.35 C521.09,325.62 508.63,341.45 501.64,361.3 C500.58,360.86 499.8,360.78 499.46,360.35 C491.32,350.11 485.46,338.91 484.71,325.53 C484.03,313.54 489.24,303.91 496.95,295.36 C506.74,284.51 519.09,276.7 530.33,267.57 C539.68,259.98 548.93,252.35 553.65,240.72 C556.25,234.32 556.8,227.72 555.17,221.12 C551.96,208.2 539.4,200.89 526.17,203.88 C513.91,206.65 503.24,212.7 493.08,219.82 C492.04,220.55 491.27,221.85 489.66,221.56 C488.66,220.29 489.65,219.35 490.29,218.48 C503.85,199.98 521.51,187.67 544.32,183.64 C574.74,178.25 599.44,199.88 594.8,234.35 C592.54,251.2 583.63,264.79 572.58,277.16 C561.56,289.49 548.61,299.8 536.35,311.35z"/></svg></div>
+                        <span class="logo-txt">Stackly</span>
+                    </a>
+                    <p>Premium digital savings planner for building wealth and achieving financial freedom.</p>
+                    <div class="footer-addr">
+                        <strong>Stackly Studio</strong>
+                        Salem, Tamil Nadu, India<br>
+                        S11.6643 N / 78.1460 E<br>
+                        hello@stackly.studio
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="plans.html">Plans</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="goals.html">Goals</a></li>
+                        <li><a href="calculator.html">Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="login.html">Log In</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                        <li><a href="admin.html">Admin Panel</a></li>
+                        <li><a href="contact.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#" data-toast="Privacy policy: request a copy from hello@stackly.studio.">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-btm">
+                <p>&copy; 2026 Stackly Studio, Salem. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://x.com/login" target="_blank" rel="noopener noreferrer" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.511zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg></a>
+                    <a href="https://www.instagram.com/accounts/login/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                    <a href="https://www.linkedin.com/login" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.31h4.52V23H.24V8.31zM8.34 8.31h4.33v2h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.51v-7.1c0-1.7-.03-3.88-2.36-3.88-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.31z"/></svg></a>
+                    <a href="https://accounts.google.com/ServiceLogin?service=youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><path d="M9.75 15.02l5.75-3.27-5.75-3.27v6.54z" fill="currentColor" stroke="none"/></svg></a>
+                </div>
+                <p>Made with intention</p>
+            </div>
+        </div>
+        <div class="footer-mark" aria-hidden="true">Stackly</div>
+    </footer>
+
+
+    <script src="js/main.js"></script>
+</body>
+</html>
