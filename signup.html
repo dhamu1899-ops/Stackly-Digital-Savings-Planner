@@ -57,23 +57,7 @@
                 <p class="auth-sub">It takes less than a minute to get started.</p>
 
                 <form class="auth-form" id="signupForm">
-                    <!-- Role selector -->
-                    <div class="role-sel">
-                        <div class="role-opt">
-                            <input type="radio" name="role" id="roleClient" value="client" checked>
-                            <label class="role-lbl" for="roleClient">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                <span>Client</span>
-                            </label>
-                        </div>
-                        <div class="role-opt">
-                            <input type="radio" name="role" id="roleAdmin" value="admin">
-                            <label class="role-lbl" for="roleAdmin">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                                <span>Admin</span>
-                            </label>
-                        </div>
-                    </div>
+                    <input type="hidden" name="role" value="client">
 
                     <div class="form-group">
                         <label for="suName">Full Name</label>

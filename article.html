@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Article — Stackly</title>
+    <link rel="stylesheet" href="css/style.css">
+    <noscript><style>.sec-head .sec-title,.sec-head .sec-sub{opacity:1!important;transform:none!important}.sec-head .sec-label::before,.sec-head .sec-label::after{transform:none!important}.reveal{opacity:1!important;transform:none!important}.preloader{display:none!important}</style></noscript>
+    <style>
+        .article-wrap { max-width: 820px; margin: 0 auto; padding: 60px 24px 100px; }
+        .article-back { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 500; color: var(--text-2); margin-bottom: 32px; text-decoration: none; transition: color var(--t); }
+        .article-back:hover { color: var(--brand); }
+        .article-header { margin-bottom: 36px; }
+        .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+        .article-meta .cat { background: rgba(254,76,40,0.1); color: var(--brand); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 9999px; }
+        .article-meta .dot { width: 3px; height: 3px; background: var(--text-3); border-radius: 50%; }
+        .article-meta span { font-size: 0.85rem; color: var(--text-3); }
+        .article-title { font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.25; margin-bottom: 18px; color: var(--text); }
+        .article-lead { font-size: 1.2rem; line-height: 1.65; color: var(--text-2); margin-bottom: 28px; font-weight: 400; }
+        .article-author-card { display: flex; align-items: center; gap: 14px; padding-bottom: 28px; border-bottom: 1px solid var(--bd); margin-bottom: 36px; }
+        .author-av { width: 44px; height: 44px; border-radius: 50%; background: var(--brand); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem; }
+        .author-info strong { display: block; font-size: 0.95rem; color: var(--text); }
+        .author-info span { font-size: 0.8rem; color: var(--text-3); }
+        .article-hero-img { border-radius: var(--r-xl); overflow: hidden; margin-bottom: 44px; box-shadow: var(--sh-lg); aspect-ratio: 16/9; background: var(--bg-3); }
+        .article-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+        .article-body { font-size: 1.05rem; line-height: 1.85; color: var(--text-2); }
+        .article-body h2 { font-size: 1.6rem; color: var(--text); margin: 40px 0 16px; font-weight: 700; line-height: 1.35; }
+        .article-body h3 { font-size: 1.25rem; color: var(--text); margin: 28px 0 12px; font-weight: 600; }
+        .article-body p { margin-bottom: 22px; }
+        .article-body ul, .article-body ol { margin: 0 0 24px 20px; padding: 0; }
+        .article-body li { margin-bottom: 10px; line-height: 1.7; }
+        .article-callout { background: var(--bg-2); border-left: 4px solid var(--brand); padding: 24px 28px; border-radius: 0 var(--r-lg) var(--r-lg) 0; margin: 32px 0; }
+        .article-callout p { margin: 0; font-weight: 500; color: var(--text); font-style: italic; }
+        .article-takeaway { background: #fff; border: 1.5px solid var(--bd); border-radius: var(--r-xl); padding: 28px; margin: 36px 0; box-shadow: var(--sh-sm); }
+        .article-takeaway h4 { font-size: 1.1rem; color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+        .article-takeaway h4 svg { color: var(--brand); }
+        .article-takeaway ul { margin-bottom: 0; }
+        .article-footer-nav { margin-top: 60px; padding-top: 36px; border-top: 1px solid var(--bd); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    </style>
+</head>
+<body class="dark-hero">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="pre-logo">
+            <div class="pre-ring"></div>
+            <svg viewBox="398 82 212 290" xmlns="http://www.w3.org/2000/svg"><path fill="#fe4c28" d="M419.71,256.18 C408,235.74 410.22,215.61 419.89,195.68 C426.37,182.32 436.26,171.44 446.51,160.9 C457.08,150.04 468.78,140.35 478.79,128.9 C487.41,119.04 494.8,108.46 500.03,96.43 C500.74,94.8 501,92.85 502.79,91.71 C503.21,91.84 503.88,91.82 504.1,92.13 C514.53,106.34 522,121.48 518.29,139.86 C515.93,151.5 508.99,160.31 500.3,167.94 C487.79,178.93 473.63,187.95 462.05,200.04 C456.22,206.12 451.19,212.66 449.15,221.05 C445.38,236.57 454.27,249.2 470.2,250.78 C485.24,252.27 499.3,248.88 512.63,242 C514.02,241.28 515.21,239.79 517.06,240.55 C517.83,242.06 516.69,242.79 515.92,243.56 C502.48,256.92 487.52,267.97 468.59,271.95 C447.92,276.29 431.27,272.38 419.71,256.18z"/><path fill="#fe4c28" d="M536.35,311.35 C521.09,325.62 508.63,341.45 501.64,361.3 C500.58,360.86 499.8,360.78 499.46,360.35 C491.32,350.11 485.46,338.91 484.71,325.53 C484.03,313.54 489.24,303.91 496.95,295.36 C506.74,284.51 519.09,276.7 530.33,267.57 C539.68,259.98 548.93,252.35 553.65,240.72 C556.25,234.32 556.8,227.72 555.17,221.12 C551.96,208.2 539.4,200.89 526.17,203.88 C513.91,206.65 503.24,212.7 493.08,219.82 C492.04,220.55 491.27,221.85 489.66,221.56 C488.66,220.29 489.65,219.35 490.29,218.48 C503.85,199.98 521.51,187.67 544.32,183.64 C574.74,178.25 599.44,199.88 594.8,234.35 C592.54,251.2 583.63,264.79 572.58,277.16 C561.56,289.49 548.61,299.8 536.35,311.35z"/></svg>
+        </div>
+        <div class="pre-text">Stackly</div>
+        <div class="pre-sub">Digital Savings Planner</div>
+        <div class="pre-bar"><div class="pre-fill"></div></div>
+        <div class="pre-pct">0%</div>
+    </div>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <div class="nav-wrap">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg viewBox="398 82 212 290" xmlns="http://www.w3.org/2000/svg"><path fill="#fe4c28" d="M419.71,256.18 C408,235.74 410.22,215.61 419.89,195.68 C426.37,182.32 436.26,171.44 446.51,160.9 C457.08,150.04 468.78,140.35 478.79,128.9 C487.41,119.04 494.8,108.46 500.03,96.43 C500.74,94.8 501,92.85 502.79,91.71 C503.21,91.84 503.88,91.82 504.1,92.13 C514.53,106.34 522,121.48 518.29,139.86 C515.93,151.5 508.99,160.31 500.3,167.94 C487.79,178.93 473.63,187.95 462.05,200.04 C456.22,206.12 451.19,212.66 449.15,221.05 C445.38,236.57 454.27,249.2 470.2,250.78 C485.24,252.27 499.3,248.88 512.63,242 C514.02,241.28 515.21,239.79 517.06,240.55 C517.83,242.06 516.69,242.79 515.92,243.56 C502.48,256.92 487.52,267.97 468.59,271.95 C447.92,276.29 431.27,272.38 419.71,256.18z"/><path fill="#fe4c28" d="M536.35,311.35 C521.09,325.62 508.63,341.45 501.64,361.3 C500.58,360.86 499.8,360.78 499.46,360.35 C491.32,350.11 485.46,338.91 484.71,325.53 C484.03,313.54 489.24,303.91 496.95,295.36 C506.74,284.51 519.09,276.7 530.33,267.57 C539.68,259.98 548.93,252.35 553.65,240.72 C556.25,234.32 556.8,227.72 555.17,221.12 C551.96,208.2 539.4,200.89 526.17,203.88 C513.91,206.65 503.24,212.7 493.08,219.82 C492.04,220.55 491.27,221.85 489.66,221.56 C488.66,220.29 489.65,219.35 490.29,218.48 C503.85,199.98 521.51,187.67 544.32,183.64 C574.74,178.25 599.44,199.88 594.8,234.35 C592.54,251.2 583.63,264.79 572.58,277.16 C561.56,289.49 548.61,299.8 536.35,311.35z"/></svg></div>
+                <span class="logo-txt">Stackly</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="plans.html">Plans</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="login.html" class="nav-login">Log In</a>
+                <a href="login.html" class="btn-start">Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+            <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Page Hero Banner -->
+    <section class="page-hero" style="background-image:var(--ph-grad), url('assets/photo-1499750310107-5fef28a66643-1600.webp')">
+        <div class="container">
+            <span class="sec-label">Stackly Journal</span>
+            <h1>Article <em class="it">reading view.</em></h1>
+            <p>Thoughtful strategies and actionable financial insights from our editorial team.</p>
+            <div class="ph-meta">
+                <div class="ph-crumb"><a href="index.html">Home</a><span class="sep"></span><a href="blog.html">Blog</a><span class="sep"></span><strong id="crumbTitle">Article</strong></div>
+                <span class="ph-badge">&#10022; Stackly Editorial</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content Area -->
+    <main class="article-wrap">
+        <a href="blog.html" class="article-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to All Articles
+        </a>
+
+        <header class="article-header">
+            <div class="article-meta">
+                <span class="cat" id="artCat">Guides</span>
+                <span class="dot"></span>
+                <span id="artRead">8 min read</span>
+                <span class="dot"></span>
+                <span id="artDate">September 2026</span>
+            </div>
+            <h1 class="article-title" id="artTitle">The Complete Guide to Building Your First Emergency Fund</h1>
+            <p class="article-lead" id="artLead">Why every financial plan starts with a safety net, how much you actually need, and the fastest strategies to get there — even on a tight income.</p>
+            <div class="article-author-card">
+                <div class="author-av">SE</div>
+                <div class="author-info">
+                    <strong id="artAuthor">Stackly Editorial Team</strong>
+                    <span>Published in Wealth Management &amp; Personal Finance</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="article-hero-img">
+            <img id="artImg" src="assets/photo-1434626881859-194d67b2b86f-1000.webp" alt="Article banner">
+        </div>
+
+        <article class="article-body" id="artContent">
+            <!-- Populated dynamically based on article id -->
+        </article>
+
+        <div class="article-footer-nav">
+            <a href="blog.html" class="btn btn-outline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                More Articles
+            </a>
+            <a href="calculator.html" class="btn btn-brand">Try Savings Calculator →</a>
+        </div>
+    </main>
+
+    <!-- Newsletter Block -->
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <div class="cta-dark reveal" style="max-width:720px;">
+                <span class="sec-label">Newsletter</span>
+                <h2>Get one smart tip <em class="it">every week.</em></h2>
+                <p>Join 12,000 readers getting practical savings advice — no fluff, unsubscribe anytime.</p>
+                <div style="display:flex;gap:12px;max-width:440px;margin:0 auto;position:relative;flex-wrap:wrap;justify-content:center;">
+                    <input type="email" placeholder="your@email.com" style="flex:1;min-width:220px;padding:15px 22px;border-radius:9999px;border:1.5px solid var(--bd-d);background:transparent;color:var(--text-inv);font-family:var(--sans);font-size:0.95rem;">
+                    <button class="btn btn-brand">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-news">
+                    <h3>Money advice that feels like a <em class="it">quiet advantage.</em></h3>
+                    <p>One thoughtful email each week — no noise, no spam, unsubscribe anytime.</p>
+                </div>
+                <form class="news-form" action="#" onsubmit="return false;">
+                    <input type="email" placeholder="Enter your email address" aria-label="Email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon"><svg viewBox="398 82 212 290" xmlns="http://www.w3.org/2000/svg"><path fill="#fe4c28" d="M419.71,256.18 C408,235.74 410.22,215.61 419.89,195.68 C426.37,182.32 436.26,171.44 446.51,160.9 C457.08,150.04 468.78,140.35 478.79,128.9 C487.41,119.04 494.8,108.46 500.03,96.43 C500.74,94.8 501,92.85 502.79,91.71 C503.21,91.84 503.88,91.82 504.1,92.13 C514.53,106.34 522,121.48 518.29,139.86 C515.93,151.5 508.99,160.31 500.3,167.94 C487.79,178.93 473.63,187.95 462.05,200.04 C456.22,206.12 451.19,212.66 449.15,221.05 C445.38,236.57 454.27,249.2 470.2,250.78 C485.24,252.27 499.3,248.88 512.63,242 C514.02,241.28 515.21,239.79 517.06,240.55 C517.83,242.06 516.69,242.79 515.92,243.56 C502.48,256.92 487.52,267.97 468.59,271.95 C447.92,276.29 431.27,272.38 419.71,256.18z"/><path fill="#fe4c28" d="M536.35,311.35 C521.09,325.62 508.63,341.45 501.64,361.3 C500.58,360.86 499.8,360.78 499.46,360.35 C491.32,350.11 485.46,338.91 484.71,325.53 C484.03,313.54 489.24,303.91 496.95,295.36 C506.74,284.51 519.09,276.7 530.33,267.57 C539.68,259.98 548.93,252.35 553.65,240.72 C556.25,234.32 556.8,227.72 555.17,221.12 C551.96,208.2 539.4,200.89 526.17,203.88 C513.91,206.65 503.24,212.7 493.08,219.82 C492.04,220.55 491.27,221.85 489.66,221.56 C488.66,220.29 489.65,219.35 490.29,218.48 C503.85,199.98 521.51,187.67 544.32,183.64 C574.74,178.25 599.44,199.88 594.8,234.35 C592.54,251.2 583.63,264.79 572.58,277.16 C561.56,289.49 548.61,299.8 536.35,311.35z"/></svg></div>
+                    <span class="logo-txt">Stackly</span>
+                </a>
+                <p>Premium digital savings planner for building wealth and achieving financial freedom.</p>
+                <div class="footer-addr">
+                    <strong>Stackly Studio</strong>
+                    Salem, Tamil Nadu, India<br>
+                    S11.6643 N / 78.1460 E<br>
+                    hello@stackly.studio
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="plans.html">Plans</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="goals.html">Goals</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="login.html">Log In</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="admin.html">Admin Panel</a></li>
+                    <li><a href="contact.html">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" data-toast="Privacy policy: request a copy from hello@stackly.studio.">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-btm">
+            <p>&copy; 2026 Stackly Studio, Salem. All rights reserved.</p>
+            <p>Made with intention</p>
+        </div>
+    </footer>
+
+    <!-- Article loader script -->
+    <script>
+        (function() {
+            var articles = {
+                'emergency-fund-guide': {
+                    title: 'The Complete Guide to Building Your First Emergency Fund',
+                    cat: 'Guides',
+                    read: '8 min read',
+                    date: 'Sep 20, 2026',
+                    img: 'assets/photo-1434626881859-194d67b2b86f-1000.webp',
+                    lead: 'Why every financial plan starts with a safety net, how much you actually need, and the fastest strategies to get there — even on a tight income.',
+                    content: `
+                        <p>An emergency fund isn’t just cash set aside in a separate account — it is financial oxygen. It turns what could be a life-altering crisis into an inconvenient speed bump. Without one, any unexpected expense immediately threatens your long-term plans or pushes you into high-interest debt.</p>
+                        
+                        <h2>1. How Much Do You Really Need?</h2>
+                        <p>The standard textbook rule recommends 3 to 6 months of living expenses. However, the right number depends on your income stability:</p>
+                        <ul>
+                            <li><strong>Stable dual-income household:</strong> 3 months of essential baseline expenses is often sufficient.</li>
+                            <li><strong>Single income or homeowner:</strong> 4 to 5 months provides peace of mind against surprise repairs or medical bills.</li>
+                            <li><strong>Freelancers, entrepreneurs, or commission earners:</strong> 6 to 9 months provides critical breathing room across dry seasons.</li>
+                        </ul>
+
+                        <div class="article-callout">
+                            <p>"An emergency fund is not an investment meant to produce yield. It is insurance you buy for yourself with liquid cash."</p>
+                        </div>
+
+                        <h2>2. Where Should You Keep It?</h2>
+                        <p>Keep your emergency reserves in a dedicated High-Yield Savings Account (HYSA) or a liquid money-market fund. The criteria are simple:</p>
+                        <ol>
+                            <li><strong>Capital preservation:</strong> Zero risk to principal. Never invest emergency money in stocks or volatile assets.</li>
+                            <li><strong>Instant liquidity:</strong> Funds must be accessible within 24 to 48 hours without penalty.</li>
+                            <li><strong>Slight separation:</strong> Keep it at a different bank from your daily checking account so you aren't tempted to spend it on impulse purchases.</li>
+                        </ol>
+
+                        <div class="article-takeaway">
+                            <h4>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Action Checklist for This Week
+                            </h4>
+                            <ul>
+                                <li>Calculate your bare-minimum survival budget (housing, food, utilities, debt minimums).</li>
+                                <li>Set an initial milestone of $1,000 to establish momentum.</li>
+                                <li>Automate a recurring transfer on payday directly to your high-yield reserve.</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                '50-30-20-rule': {
+                    title: 'The 50/30/20 Rule for Modern Savers',
+                    cat: 'Budgeting',
+                    read: '5 min read',
+                    date: 'Sep 24, 2026',
+                    img: 'assets/photo-1579621970563-ebec7560ff3e-800.webp',
+                    lead: 'How to split your income between needs, wants, and savings for lasting financial health without depriving yourself today.',
+                    content: `
+                        <p>Most budgets fail because they are too restrictive. Tracking every morning coffee or sandwich quickly leads to budgeting fatigue. The 50/30/20 rule, popularized by Senator Elizabeth Warren, creates an intuitive framework that balances today's happiness with tomorrow's freedom.</p>
+
+                        <h2>The Three Buckets Explained</h2>
+                        <p>Your take-home net income should be allocated across three simple categories:</p>
+                        <ul>
+                            <li><strong>50% Needs:</strong> Rent or mortgage, groceries, utilities, basic transportation, insurance, and minimum loan repayments.</li>
+                            <li><strong>30% Wants:</strong> Dining out, vacations, streaming subscriptions, hobbies, shopping, and entertainment.</li>
+                            <li><strong>20% Savings & Debt Acceleration:</strong> Emergency funds, retirement accounts, investments, and payments above minimum debt requirements.</li>
+                        </ul>
+
+                        <div class="article-callout">
+                            <p>"Budgeting is not about limiting yourself — it is about making sure your money goes to what truly matters to you."</p>
+                        </div>
+
+                        <h2>How to Implement It with Stackly</h2>
+                        <p>Use Stackly’s savings goals feature to automate the 20% savings slice first. When you pay your future self first on the day your paycheck lands, you can spend the remaining discretionary funds guilt-free.</p>
+                    `
+                },
+                'compound-interest': {
+                    title: 'Compound Interest: Your Secret Weapon',
+                    cat: 'Investing',
+                    read: '7 min read',
+                    date: 'Sep 26, 2026',
+                    img: 'assets/photo-1633158829585-23ba8f7c8caf-800.webp',
+                    lead: 'How time and compound growth can transform modest, consistent savings into generational wealth.',
+                    content: `
+                        <p>Albert Einstein reportedly called compound interest the eighth wonder of the world: "He who understands it, earns it; he who doesn't, pays it." Understanding the exponential math behind compound returns is the single most motivating concept in personal finance.</p>
+
+                        <h2>The Math of Compounding</h2>
+                        <p>When you earn interest on both your original principal and on previous interest payments, your money grows exponentially rather than linearly. Over 10, 20, or 30 years, the vast majority of your total wealth comes not from your deposits, but from compound earnings.</p>
+
+                        <div class="article-takeaway">
+                            <h4>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Real-World Comparison
+                            </h4>
+                            <p>Saving $300 a month starting at age 25 with an 8% annual return yields over <strong>$1,000,000</strong> by age 65. Waiting until age 35 to start cuts the final total in half, requiring double the monthly contribution to catch up.</p>
+                        </div>
+
+                        <p>Try our interactive <a href="calculator.html" style="color:var(--brand);font-weight:600;">Savings Calculator</a> to test your own numbers and timeline.</p>
+                    `
+                },
+                'emergency-fund-works': {
+                    title: 'Building an Emergency Fund That Works',
+                    cat: 'Lifestyle',
+                    read: '4 min read',
+                    date: 'Sep 27, 2026',
+                    img: 'assets/photo-1554224154-26032ffc0d07-800.webp',
+                    lead: 'Why 3 to 6 months of expenses matters and how to structure tiered emergency buckets for maximum efficiency.',
+                    content: `
+                        <p>Not all emergencies are created equal. A flat tire costs $150, while unexpected job transition may require several months of living expenses. A tiered emergency architecture optimizes both security and return.</p>
+                        <h2>Tier 1: Minor Buffer ($1,000 - $2,000)</h2>
+                        <p>Kept in an instantly accessible checking-linked savings account for same-day unexpected bills.</p>
+                        <h2>Tier 2: Core Survival (3 Months)</h2>
+                        <p>Stored in a high-yield account with competitive interest rates and no lockup fees.</p>
+                    `
+                },
+                'debt-payoff-strategies': {
+                    title: 'Avalanche vs. Snowball: Paying Off Debt',
+                    cat: 'Debt',
+                    read: '6 min read',
+                    date: 'Sep 28, 2026',
+                    img: 'assets/photo-1554224155-6726b3ff858f-800.webp',
+                    lead: 'Two proven strategies for eliminating debt — and how to choose the one that matches your psychological wiring.',
+                    content: `
+                        <p>Debt payoff is 20% math and 80% behavior. The two primary methods attack debt from different angles:</p>
+                        <ul>
+                            <li><strong>The Debt Avalanche:</strong> Pay minimums on everything, then focus all excess cash on the balance with the highest interest rate. Mathematically saves the most money.</li>
+                            <li><strong>The Debt Snowball:</strong> Pay minimums on everything, then attack the smallest balance first regardless of interest rate. Delivers rapid psychological wins and builds momentum.</li>
+                        </ul>
+                    `
+                },
+                'automate-savings': {
+                    title: 'Automate Your Savings and Never Think About It',
+                    cat: 'Automation',
+                    read: '5 min read',
+                    date: 'Sep 29, 2026',
+                    img: 'assets/photo-1642790106117-e829e14a795f-800.webp',
+                    lead: 'Set up systematic workflows that save for you so willpower is never part of the financial equation.',
+                    content: `
+                        <p>Relying on willpower to save at the end of the month almost never works. By the time 30 days pass, discretionary temptations consume what is left. Automation flips the script: you save before you can spend.</p>
+                        <h2>The 3 Pillars of Automated Wealth</h2>
+                        <ol>
+                            <li>Split direct deposit at payroll.</li>
+                            <li>Scheduled recurring auto-transfers on salary day.</li>
+                            <li>Automated annual step-ups whenever you receive a raise.</li>
+                        </ol>
+                    `
+                },
+                'smart-savings-goals': {
+                    title: 'Setting Savings Goals You Will Actually Achieve',
+                    cat: 'Goals',
+                    read: '4 min read',
+                    date: 'Sep 30, 2026',
+                    img: 'assets/photo-1551288049-bebda4e38f71-800.webp',
+                    lead: 'SMART goals for money: how to define targets that stay inspiring for months and turn dreams into reality.',
+                    content: `
+                        <p>Vague goals like "I want to save more money" lead to vague results. Clear, quantifiable goals activate focus and discipline.</p>
+                        <ul>
+                            <li><strong>Specific:</strong> Name what you are saving for (e.g., "Down payment on first home").</li>
+                            <li><strong>Measurable:</strong> Assign an exact target number ($25,000).</li>
+                            <li><strong>Time-bound:</strong> Set a target date (e.g., December 2027) to calculate the exact monthly commitment required.</li>
+                        </ul>
+                    `
+                }
+            };
+
+            var params = new URLSearchParams(window.location.search);
+            var id = params.get('id') || 'emergency-fund-guide';
+            var art = articles[id] || articles['emergency-fund-guide'];
+
+            document.getElementById('pageTitle').textContent = art.title + ' — Stackly';
+            document.getElementById('crumbTitle').textContent = art.title;
+            document.getElementById('artTitle').textContent = art.title;
+            document.getElementById('artCat').textContent = art.cat;
+            document.getElementById('artRead').textContent = art.read;
+            document.getElementById('artDate').textContent = art.date;
+            document.getElementById('artLead').textContent = art.lead;
+            document.getElementById('artImg').src = art.img;
+            document.getElementById('artImg').alt = art.title;
+            document.getElementById('artContent').innerHTML = art.content;
+        })();
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

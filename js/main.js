@@ -8,6 +8,57 @@ var SL = {
     write: function(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
     drop: function(k) { try { localStorage.removeItem(k); } catch (e) {} },
     user: function() { return SL.read('stacklyUser'); },
+    getAccounts: function() {
+        var accts = SL.read('stacklyAccounts');
+        if (!accts || !Array.isArray(accts)) {
+            // Authorized administrative accounts provisioned only through administrative process
+            accts = [
+                {
+                    name: 'Stackly Admin',
+                    email: 'admin@stackly.studio',
+                    password: 'admin',
+                    role: 'admin',
+                    createdAt: Date.now()
+                },
+                {
+                    name: 'Stackly Studio Admin',
+                    email: 'hello@stackly.studio',
+                    password: 'admin',
+                    role: 'admin',
+                    createdAt: Date.now()
+                }
+            ];
+            SL.write('stacklyAccounts', accts);
+        }
+        return accts;
+    },
+    saveAccount: function(account) {
+        var accts = SL.getAccounts();
+        var idx = -1;
+        for (var i = 0; i < accts.length; i++) {
+            if (accts[i].email && accts[i].email.toLowerCase() === (account.email || '').toLowerCase()) {
+                idx = i;
+                break;
+            }
+        }
+        if (idx >= 0) {
+            accts[idx] = Object.assign({}, accts[idx], account);
+        } else {
+            accts.push(account);
+        }
+        SL.write('stacklyAccounts', accts);
+        return account;
+    },
+    findAccount: function(email) {
+        var accts = SL.getAccounts();
+        var clean = String(email || '').trim().toLowerCase();
+        for (var i = 0; i < accts.length; i++) {
+            if (accts[i].email && accts[i].email.toLowerCase() === clean) {
+                return accts[i];
+            }
+        }
+        return null;
+    },
     nameFromEmail: function(email) {
         var raw = String(email || '').split('@')[0].replace(/[._\-+0-9]+/g, ' ').trim();
         if (!raw) return 'Stackly Saver';
@@ -262,7 +313,21 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(function(a) {
         a.addEventListener('click', function(e) {
             var h = this.getAttribute('href');
-            if (h && h !== '#') { e.preventDefault(); var t = document.querySelector(h); if (t) t.scrollIntoView({ behavior: 'smooth' }); }
+            if (h && h !== '#') {
+                var t = document.querySelector(h);
+                if (t) {
+                    e.preventDefault();
+                    t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    var navContainer = a.closest('.side-nav');
+                    if (navContainer) {
+                        navContainer.querySelectorAll('a').forEach(function(l) { l.classList.remove('active'); });
+                        a.classList.add('active');
+                    }
+                    if (history.pushState) {
+                        history.pushState(null, null, h);
+                    }
+                }
+            }
         });
     });
 
@@ -523,38 +588,67 @@ function initAuth() {
         if (overlay) overlay.classList.add('active');
     }
 
-    // LOG IN — client goes to the client dashboard, admin to the admin dashboard
+    // LOG IN — validate proper email format, then permit successful login
     if (loginForm) loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
         var email = val('loginEmail'), pass = val('loginPass'), role = pickRole();
         if (!email || !pass) { say('Enter your email and password to continue.'); return; }
         if (!role) { say('Please select a role first.'); return; }
 
+        // Validate proper email format
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+            say('Please enter a proper email address (e.g. you@email.com).');
+            return;
+        }
+
+        // Retrieve existing profile name if available, else derive from email
         var profile = SL.read('stacklyProfile');
         var sameEmail = profile && profile.email && profile.email.toLowerCase() === email.toLowerCase();
         var name = (sameEmail && profile.name) ? profile.name : SL.nameFromEmail(email);
+
+        // Save session
         SL.write('stacklyUser', { name: name, email: email, role: role, initials: SL.initials(name), since: Date.now() });
+
+        // Save or update account in accounts registry
+        SL.saveAccount({ name: name, email: email, password: pass, role: role, lastLogin: Date.now() });
 
         showSuccess();
         var dest = role === 'admin' ? 'admin.html' : 'dashboard.html';
         setTimeout(function() { window.location.href = dest; }, 2400);
     });
 
-    // SIGN UP — create the profile, then continue to the login page
+    // SIGN UP — create the password-backed profile, then continue to the login page
     if (signupForm) signupForm.addEventListener('submit', function(e) {
         e.preventDefault();
         var name = val('suName'), email = val('suEmail'), pass = val('suPass');
         var confirmEl = document.getElementById('suConfirm');
         var confirmPass = confirmEl ? confirmEl.value.trim() : '';
-        var role = pickRole();
+
+        // Public signup strictly creates Client accounts
+        var role = 'client';
 
         if (!name || !email || !pass) { say('Fill in your name, email and password.'); return; }
         if (pass.length < 8) { say('Use at least 8 characters for your password.'); return; }
         if (!confirmPass) { say('Confirm your password to continue.'); return; }
         if (pass !== confirmPass) { say('Passwords do not match — try again.'); return; }
-        if (!role) { say('Please select a role first.'); return; }
 
-        SL.write('stacklyProfile', { name: name, email: email, role: role });
+        var existing = SL.findAccount(email);
+        if (existing && existing.role === 'admin') {
+            say('An administrative account with this email already exists.');
+            return;
+        }
+
+        // Store password-backed account
+        var account = {
+            name: name,
+            email: email,
+            password: pass,
+            role: role,
+            createdAt: Date.now()
+        };
+        SL.saveAccount(account);
+        SL.write('stacklyProfile', { name: name, email: email, role: role, password: pass });
 
         var overlay = document.getElementById('authSuccess');
         var sub = overlay ? overlay.querySelector('.auth-success-sub') : null;
@@ -605,23 +699,63 @@ function initAuth() {
 
     document.addEventListener('DOMContentLoaded', function() {
 
-        // 1. Placeholder / utility links (no functionality wired up) -> 404 page
+        // 1. Placeholder / utility links
         document.querySelectorAll('a[data-toast], a[href="#"], a[href=""]').forEach(function(a) {
             if (a.__bound) return;
             a.__bound = true;
             a.addEventListener('click', function(e) {
-                e.preventDefault();
                 if (a.hasAttribute('data-logout')) return; // handled by the logout action
-                window.location.href = '404.html';
+                var href = a.getAttribute('href');
+                // In-page section anchor: let smooth scroll handle it, do NOT redirect to 404
+                if (href && href.charAt(0) === '#' && href.length > 1) {
+                    var target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        return;
+                    }
+                }
+                var toastMsg = a.getAttribute('data-toast');
+                if (toastMsg) {
+                    e.preventDefault();
+                    toast(toastMsg);
+                    return;
+                }
+                if (href === '#' || href === '' || !href) {
+                    e.preventDefault();
+                    window.location.href = '404.html';
+                }
             });
         });
+
+        // Newsletter persistence helper
+        function saveNewsletterSubscription(email) {
+            var clean = String(email || '').trim().toLowerCase();
+            if (!clean || clean.indexOf('@') < 0) return false;
+            var subs = SL.read('stacklySubscribers') || [];
+            var exists = subs.some(function(s) {
+                return (typeof s === 'string' ? s : s.email) === clean;
+            });
+            if (!exists) {
+                subs.push({
+                    email: clean,
+                    source: location.pathname.split('/').pop() || 'index.html',
+                    subscribedAt: new Date().toISOString()
+                });
+                SL.write('stacklySubscribers', subs);
+            }
+            return true;
+        }
 
         // 2. Newsletter forms (footer)
         document.querySelectorAll('.news-form').forEach(function(f) {
             f.addEventListener('submit', function(e) {
                 e.preventDefault();
                 var i = f.querySelector('input');
-                if (i && !i.value.trim()) { toast('Enter your email address to subscribe.'); i.focus(); return; }
+                var val = i ? i.value.trim() : '';
+                if (!val) { toast('Enter your email address to subscribe.'); if (i) i.focus(); return; }
+                if (val.indexOf('@') < 0) { toast('Please enter a valid email address.'); if (i) i.focus(); return; }
+                saveNewsletterSubscription(val);
                 if (i) i.value = '';
                 toast('Subscribed! One thoughtful email, every week.');
             });
@@ -631,12 +765,16 @@ function initAuth() {
         document.querySelectorAll('.cta-dark button.btn-brand, .cta-dark .btn-brand').forEach(function(b) {
             if (b.__bound) return;
             b.__bound = true;
-            b.addEventListener('click', function() {
+            b.addEventListener('click', function(e) {
+                e.preventDefault();
                 var box = b.parentElement;
                 var i = box ? box.querySelector('input') : null;
-                if (i && !i.value.trim()) { toast('Enter your email address to subscribe.'); i.focus(); return; }
+                var val = i ? i.value.trim() : '';
+                if (!val) { toast('Enter your email address to subscribe.'); if (i) i.focus(); return; }
+                if (val.indexOf('@') < 0) { toast('Please enter a valid email address.'); if (i) i.focus(); return; }
+                saveNewsletterSubscription(val);
                 if (i) i.value = '';
-                toast('Welcome aboard — check your inbox to confirm.');
+                toast('Welcome aboard \u2014 check your inbox to confirm.');
             });
         });
 
@@ -644,14 +782,46 @@ function initAuth() {
         var cf = document.getElementById('contactForm');
         if (cf) cf.addEventListener('submit', function(e) {
             e.preventDefault();
+            var nameEl = document.getElementById('cName');
+            var emailEl = document.getElementById('cEmail');
+            var subEl = document.getElementById('cSubject');
+            var msgEl = document.getElementById('cMessage');
+
+            var name = (nameEl ? nameEl.value : '').trim();
+            var email = (emailEl ? emailEl.value : '').trim();
+            var subject = (subEl ? subEl.value : '').trim();
+            var message = (msgEl ? msgEl.value : '').trim();
+
+            if (!name || !email || !message) {
+                toast('Please fill in your name, email and message.');
+                return;
+            }
+
             var btn = cf.querySelector('button[type="submit"]');
             var original = btn ? btn.innerHTML : '';
             if (btn) { btn.disabled = true; btn.textContent = 'Sending\u2026'; }
             setTimeout(function() {
-                if (btn) { btn.disabled = false; btn.innerHTML = original; }
-                cf.reset();
-                toast('Message sent \u2014 we reply within one business day.');
-            }, 900);
+                try {
+                    var enquiries = SL.read('stacklyEnquiries') || [];
+                    enquiries.push({
+                        id: 'ENQ-' + Date.now(),
+                        name: name,
+                        email: email,
+                        subject: subject || 'General Support',
+                        message: message,
+                        status: 'pending',
+                        submittedAt: new Date().toISOString()
+                    });
+                    SL.write('stacklyEnquiries', enquiries);
+
+                    if (btn) { btn.disabled = false; btn.innerHTML = original; }
+                    cf.reset();
+                    toast('Message sent \u2014 we reply within one business day.');
+                } catch (err) {
+                    if (btn) { btn.disabled = false; btn.innerHTML = original; }
+                    toast('Unable to send enquiry. Please try again.');
+                }
+            }, 600);
         });
 
         // 5. Social sign-in (no provider wired up) -> 404 page
